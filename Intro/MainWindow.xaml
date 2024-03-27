@@ -1,0 +1,232 @@
+﻿<UserControl
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:b="http://schemas.microsoft.com/xaml/behaviors"
+    xmlns:nextmu="clr-namespace:NextMU"
+    xmlns:noesis="clr-namespace:NoesisGUIExtensions;assembly=Noesis.GUI.Extensions"
+    xmlns:sys="clr-namespace:System;assembly=mscorlib"
+    mc:Ignorable="d"
+    x:Name="Root"
+    Background="Black"
+    d:DesignWidth="1280"
+    d:DesignHeight="720"
+    d:DataContext="{d:DesignInstance {x:Type nextmu:ApplicationContext}, IsDesignTimeCreatable=True}"
+    noesis:Loc.Source="{Binding Settings.SelectedLanguage, StringFormat=/Languages/Intro/{0}.xaml, FallbackValue='/Languages/Intro/es-ES.xaml'}"
+    >
+    <UserControl.Resources>
+      <ResourceDictionary>
+        <ResourceDictionary.MergedDictionaries>
+            <ResourceDictionary Source="../SharedResources.xaml"/>
+        </ResourceDictionary.MergedDictionaries>
+      </ResourceDictionary>
+    </UserControl.Resources>
+    <Grid
+    TextElement.FontFamily="Roboto"
+    TextElement.FontSize="{Binding Converter={StaticResource vhConverter}, ConverterParameter=1.6}"
+    TextElement.FontWeight="SemiBold"
+    TextElement.Foreground="#F5F5F3"
+    >
+      <Grid>
+          <Grid.ColumnDefinitions>
+              <ColumnDefinition />
+              <ColumnDefinition Width="3*" />
+              <ColumnDefinition />
+          </Grid.ColumnDefinitions>
+          <Grid.RowDefinitions>
+              <RowDefinition Height="2*" />
+              <RowDefinition Height="20*" />
+              <RowDefinition Height="4*" />
+          </Grid.RowDefinitions>
+          <Image Grid.Column="1" Grid.Row="1" MaxHeight="400" Source="Images/noesisgui.png" VerticalAlignment="Center" HorizontalAlignment="Center">
+              <Image.Triggers>
+                  <EventTrigger RoutedEvent="Control.Loaded">
+                      <BeginStoryboard>
+                          <Storyboard>
+                              <DoubleAnimationUsingKeyFrames
+                                  Storyboard.TargetProperty="(Image.Opacity)"
+                              >
+                                  <EasingDoubleKeyFrame KeyTime="0:0:0" Value="0.0"/>
+                                  <EasingDoubleKeyFrame KeyTime="0:0:2" Value="1.0"/>
+                                  <EasingDoubleKeyFrame KeyTime="0:0:3" Value="0.0"/>
+                              </DoubleAnimationUsingKeyFrames>
+                          </Storyboard>
+                      </BeginStoryboard>
+                  </EventTrigger>
+              </Image.Triggers>
+          </Image>
+          <Image Grid.Column="1" Grid.Row="1" MaxWidth="500" Source="Images/fmod.png" VerticalAlignment="Center" HorizontalAlignment="Center">
+              <Image.Triggers>
+                  <EventTrigger RoutedEvent="Control.Loaded">
+                      <BeginStoryboard>
+                          <Storyboard>
+                              <DoubleAnimationUsingKeyFrames
+                                  Storyboard.TargetProperty="(Image.Opacity)"
+                              >
+                                  <EasingDoubleKeyFrame KeyTime="0:0:0" Value="0.0"/>
+                                  <EasingDoubleKeyFrame KeyTime="0:0:3" Value="0.0"/>
+                                  <EasingDoubleKeyFrame KeyTime="0:0:5" Value="1.0"/>
+                                  <EasingDoubleKeyFrame KeyTime="0:0:6" Value="0.0"/>
+                              </DoubleAnimationUsingKeyFrames>
+                          </Storyboard>
+                      </BeginStoryboard>
+                  </EventTrigger>
+              </Image.Triggers>
+          </Image>
+          <Image Grid.Column="1" Grid.Row="1" MaxHeight="400" Source="Images/nextmu.png" VerticalAlignment="Center" HorizontalAlignment="Center">
+              <Image.Triggers>
+                  <EventTrigger RoutedEvent="Control.Loaded">
+                      <BeginStoryboard>
+                          <Storyboard FillBehavior="Stop">
+                              <DoubleAnimationUsingKeyFrames
+                                  Storyboard.TargetProperty="(Image.Opacity)"
+                              >
+                                  <EasingDoubleKeyFrame KeyTime="0:0:0" Value="0.0"/>
+                                  <EasingDoubleKeyFrame KeyTime="0:0:6" Value="0.0"/>
+                                  <EasingDoubleKeyFrame KeyTime="0:0:8" Value="1.0"/>
+                              </DoubleAnimationUsingKeyFrames>
+                          </Storyboard>
+                      </BeginStoryboard>
+                  </EventTrigger>
+              </Image.Triggers>
+          </Image>
+          <Grid Grid.Column="1" Grid.Row="2">
+              <Grid.RowDefinitions>
+                  <RowDefinition Height="Auto" />
+                  <RowDefinition MinHeight="16" MaxHeight="24" />
+                  <RowDefinition />
+              </Grid.RowDefinitions>
+              <Grid
+              Grid.Row="0" 
+              HorizontalAlignment="Center"
+              TextElement.FontSize="{Binding Converter={StaticResource vhConverter}, ConverterParameter=2}"
+              Margin="0,0,0,6"
+              >
+                <TextBlock noesis:RichText.Text="{noesis:Loc UpdateSystem.Initializing}">
+                    <TextBlock.Style>
+                        <Style TargetType="{x:Type TextBlock}">
+                            <Setter Property="Visibility" Value="Collapsed"/>
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding Update.State, FallbackValue=Initialize}" Value="Initialize">
+                                    <Setter Property="Visibility" Value="Visible"/>
+                                </DataTrigger>
+                            </Style.Triggers>                    
+                        </Style>
+                    </TextBlock.Style>
+                </TextBlock>
+                <TextBlock noesis:RichText.Text="{noesis:Loc UpdateSystem.WaitingServers}">
+                    <TextBlock.Style>
+                        <Style TargetType="{x:Type TextBlock}">
+                            <Setter Property="Visibility" Value="Collapsed"/>
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding Update.State}" Value="WaitingServers">
+                                    <Setter Property="Visibility" Value="Visible"/>
+                                </DataTrigger>
+                            </Style.Triggers>                    
+                        </Style>
+                    </TextBlock.Style>
+                </TextBlock>
+                <TextBlock noesis:RichText.Text="{noesis:Loc UpdateSystem.WaitingFilesList}">
+                    <TextBlock.Style>
+                        <Style TargetType="{x:Type TextBlock}">
+                            <Setter Property="Visibility" Value="Collapsed"/>
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding Update.State}" Value="WaitingFilesList">
+                                    <Setter Property="Visibility" Value="Visible"/>
+                                </DataTrigger>
+                            </Style.Triggers>                    
+                        </Style>
+                    </TextBlock.Style>
+                </TextBlock>
+                <TextBlock noesis:RichText.Text="{noesis:Loc UpdateSystem.VerifyingFiles}">
+                    <TextBlock.Style>
+                        <Style TargetType="{x:Type TextBlock}">
+                            <Setter Property="Visibility" Value="Collapsed"/>
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding Update.State}" Value="VerifyingFiles">
+                                    <Setter Property="Visibility" Value="Visible"/>
+                                </DataTrigger>
+                            </Style.Triggers>                    
+                        </Style>
+                    </TextBlock.Style>
+                </TextBlock>
+                <TextBlock noesis:RichText.Text="{noesis:Loc UpdateSystem.UpdatingFiles}">
+                    <TextBlock.Style>
+                        <Style TargetType="{x:Type TextBlock}">
+                            <Setter Property="Visibility" Value="Collapsed"/>
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding Update.State}" Value="UpdatingFiles">
+                                    <Setter Property="Visibility" Value="Visible"/>
+                                </DataTrigger>
+                            </Style.Triggers>                    
+                        </Style>
+                    </TextBlock.Style>
+                </TextBlock>
+                <TextBlock noesis:RichText.Text="{noesis:Loc UpdateSystem.WritingVersion}">
+                    <TextBlock.Style>
+                        <Style TargetType="{x:Type TextBlock}">
+                            <Setter Property="Visibility" Value="Collapsed"/>
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding Update.State}" Value="WritingVersion">
+                                    <Setter Property="Visibility" Value="Visible"/>
+                                </DataTrigger>
+                            </Style.Triggers>                    
+                        </Style>
+                    </TextBlock.Style>
+                </TextBlock>
+                <TextBlock noesis:RichText.Text="{noesis:Loc UpdateSystem.InitializeGame}">
+                    <TextBlock.Style>
+                        <Style TargetType="{x:Type TextBlock}">
+                            <Setter Property="Visibility" Value="Collapsed"/>
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding Update.State}" Value="InitializeGame">
+                                    <Setter Property="Visibility" Value="Visible"/>
+                                </DataTrigger>
+                            </Style.Triggers>                    
+                        </Style>
+                    </TextBlock.Style>
+                </TextBlock>
+                <TextBlock noesis:RichText.Text="{noesis:Loc UpdateSystem.LoadingGame}">
+                    <TextBlock.Style>
+                        <Style TargetType="{x:Type TextBlock}">
+                            <Setter Property="Visibility" Value="Collapsed"/>
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding Update.State}" Value="LoadingGame">
+                                    <Setter Property="Visibility" Value="Visible"/>
+                                </DataTrigger>
+                            </Style.Triggers>                    
+                        </Style>
+                    </TextBlock.Style>
+                </TextBlock>
+                <TextBlock noesis:RichText.Text="{noesis:Loc UpdateSystem.Finished}">
+                    <TextBlock.Style>
+                        <Style TargetType="{x:Type TextBlock}">
+                            <Setter Property="Visibility" Value="Collapsed"/>
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding Update.State}" Value="Finished">
+                                    <Setter Property="Visibility" Value="Visible"/>
+                                </DataTrigger>
+                            </Style.Triggers>                    
+                        </Style>
+                    </TextBlock.Style>
+                </TextBlock>
+                <TextBlock noesis:RichText.Text="{noesis:Loc UpdateSystem.UnexpectedError}">
+                    <TextBlock.Style>
+                        <Style TargetType="{x:Type TextBlock}">
+                            <Setter Property="Visibility" Value="Collapsed"/>
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding Update.State}" Value="UnexpectedError">
+                                    <Setter Property="Visibility" Value="Visible"/>
+                                </DataTrigger>
+                            </Style.Triggers>                    
+                        </Style>
+                    </TextBlock.Style>
+                </TextBlock>
+              </Grid>
+              <ProgressBar Grid.Row="1" MaxWidth="600" Maximum="1" Value="{Binding Update.Progress, Mode=OneWay, FallbackValue=0.2}" Foreground="#05EE50" />
+          </Grid>
+      </Grid>
+      <nextmu:Popups />
+    </Grid>
+  </UserControl>

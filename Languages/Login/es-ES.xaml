@@ -1,0 +1,25 @@
+<ResourceDictionary
+  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+  xmlns:sys="clr-namespace:System;assembly=mscorlib">
+  <sys:String x:Key="Login.Title">Iniciar sesión</sys:String>
+  <sys:String x:Key="Login.Message">Al presionar iniciar sesión se abrira una ventana para que puedas entrar con tu cuenta, registrarte y/o recuperar tu contraseña.</sys:String>
+  <sys:String x:Key="Login.Buttons.Login">Iniciar sesión</sys:String>
+  <sys:String x:Key="Popup.Connecting">Conectando...</sys:String>
+  <sys:String x:Key="Popup.Buttons.Ok">Ok</sys:String>
+  <sys:String x:Key="Popup.Buttons.Yes">Si</sys:String>
+  <sys:String x:Key="Popup.Buttons.No">No</sys:String>
+  <sys:String x:Key="Popup.Buttons.Accept">Aceptar</sys:String>
+  <sys:String x:Key="Popup.Buttons.Cancel">Cancelar</sys:String>
+  <sys:String x:Key="Popup.Buttons.Retry">Reintentar</sys:String>
+  <sys:String x:Key="Popup.Buttons.Abort">Cancelar</sys:String>
+  <sys:String x:Key="Popup.Message.RetrieveOpenIdConfiguration">Obteniendo información del servidor de autenticación.</sys:String>
+  <sys:String x:Key="Popup.Message.ParseOpenIdConfigurationFailed">No se ha podido configurar el servidor de autenticación, vuelve a intentarlo mas tarde.</sys:String>
+  <sys:String x:Key="Popup.Message.RetrieveOpenIdConfigurationFailed">No se ha podido obtener la información del servidor de autenticación, vuelve a intentarlo mas tarde.</sys:String>
+  <sys:String x:Key="Popup.Message.ProcessingAuthResponse">Procesando respuesta del servidor de autenticación, por favor espera.</sys:String>
+  <sys:String x:Key="Popup.Message.InvalidAuthResponse">Ha fallado el servidor de autenticación o se ha terminado el tiempo disponible para conectarse, vuelve a intentarlo.</sys:String>
+  <sys:String x:Key="Popup.Message.FailedRetrieveAuthorizationCode">Ha fallado la comunicación con el servidor de autenticación, vuelve a intentarlo mas tarde.</sys:String>
+  <sys:String x:Key="Popup.Message.ParseAuthorizationCodeGrantFailed">Ha fallado el servidor de autenticación, vuelve a intentarlo mas tarde.</sys:String>
+  <sys:String x:Key="Popup.Message.RetrieveAuthorizationCodeGrantFailed">Ha fallado el servidor de autenticación, vuelve a intentarlo mas tarde.</sys:String>
+  <sys:String x:Key="Popup.Message.RetrieveServersList">Obteniendo lista de servidores...</sys:String>
+</ResourceDictionary>
