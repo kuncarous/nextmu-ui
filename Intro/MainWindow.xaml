@@ -56,7 +56,7 @@
                   </EventTrigger>
               </Image.Triggers>
           </Image>
-          <Image Grid.Column="1" Grid.Row="1" MaxWidth="500" Source="Images/fmod.png" VerticalAlignment="Center" HorizontalAlignment="Center">
+          <Image Grid.Column="1" Grid.Row="1" MaxHeight="400" Source="Images/nextmu.png" VerticalAlignment="Center" HorizontalAlignment="Center">
               <Image.Triggers>
                   <EventTrigger RoutedEvent="Control.Loaded">
                       <BeginStoryboard>
@@ -68,23 +68,6 @@
                                   <EasingDoubleKeyFrame KeyTime="0:0:3" Value="0.0"/>
                                   <EasingDoubleKeyFrame KeyTime="0:0:5" Value="1.0"/>
                                   <EasingDoubleKeyFrame KeyTime="0:0:6" Value="0.0"/>
-                              </DoubleAnimationUsingKeyFrames>
-                          </Storyboard>
-                      </BeginStoryboard>
-                  </EventTrigger>
-              </Image.Triggers>
-          </Image>
-          <Image Grid.Column="1" Grid.Row="1" MaxHeight="400" Source="Images/nextmu.png" VerticalAlignment="Center" HorizontalAlignment="Center">
-              <Image.Triggers>
-                  <EventTrigger RoutedEvent="Control.Loaded">
-                      <BeginStoryboard>
-                          <Storyboard FillBehavior="Stop">
-                              <DoubleAnimationUsingKeyFrames
-                                  Storyboard.TargetProperty="(Image.Opacity)"
-                              >
-                                  <EasingDoubleKeyFrame KeyTime="0:0:0" Value="0.0"/>
-                                  <EasingDoubleKeyFrame KeyTime="0:0:6" Value="0.0"/>
-                                  <EasingDoubleKeyFrame KeyTime="0:0:8" Value="1.0"/>
                               </DoubleAnimationUsingKeyFrames>
                           </Storyboard>
                       </BeginStoryboard>
